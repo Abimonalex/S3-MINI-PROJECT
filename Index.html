@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Human Stress Prediction</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+            color: #333;
+        }
+
+        h1 {
+            color: #673AB7; /* Updated to a shade of purple */
+            margin-bottom: 20px;
+        }
+
+        form {
+            max-width: 400px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            color: #555;
+        }
+
+        input {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 20px;
+            box-sizing: border-box;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: #fff;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        h2 {
+            margin-top: 30px;
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+
+        h2.stressed {
+            color: #f32159;
+        }
+
+        h2.not-stressed {
+            color: #43a047;
+        }
+    </style>
+</head>
+<body>
+    <h1>Human Stress Predictor</h1>
+
+    <form action="/predict" method="post">
+        <label for="user_input">What's on Your Mind:</label>
+        <input type="text" name="user_input" id="user_input" required>
+        <button type="submit">Predict</button>
+    </form>
+
+    {% if prediction %}
+        {% if prediction == 2 %}
+            <h2 class="stressed">Stressed</h2>
+        {% elif prediction == 1 %}
+            <h2 class="not-stressed">Not Stressed</h2>
+        {% endif %}
+    {% endif %}
+</body>
+</html>
